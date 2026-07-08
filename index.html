@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Wheel GitOps</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="card">
+        <div class="card-header">
+            <h1>Color Wheel</h1>
+            <p>Klikni na točak i izaberi boju</p>
+        </div>
+
+        <div id="pickerContainer"></div>
+
+        <div class="output-panel">
+            <div class="preview-badge" id="colorPreview"></div>
+            <div class="values">
+                <div class="val-row">
+                    <span class="label">HEX:</span>
+                    <span class="value" id="hexValue">-</span>
+                </div>
+                <div class="val-row">
+                    <span class="label">RGB:</span>
+                    <span class="value" id="rgbValue">-</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

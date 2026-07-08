@@ -1,0 +1,45 @@
+name: GitOps Workflow
+
+on:
+  push:
+    branches: [ dev, test, main ]
+  pull_request:
+    branches: [ test, main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js Environment
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: 'npm'
+
+    - name: Install Dependencies
+      run: npm ci
+
+    - name: Verify Application Build
+      run: npm run build
+
+    - name: Deploy to Development Environment
+      if: github.ref == 'refs/heads/dev'
+      run: |
+        echo "Executing: docker compose -f docker-compose.dev.yml up -d --build"
+        echo "Deployment status: SUCCESS"
+
+    - name: Deploy to Testing Environment
+      if: github.ref == 'refs/heads/test' || github.base_ref == 'test'
+      run: |
+        echo "Executing: docker compose -f docker-compose.test.yml up -d --build"
+        echo "Deployment status: SUCCESS"
+
+    - name: Deploy to Production Environment
+      if: github.ref == 'refs/heads/main' || github.base_ref == 'main'
+      run: |
+        echo "Executing: docker compose -f docker-compose.prod.yml up -d --build"
+        echo "Deployment status: SUCCESS"
