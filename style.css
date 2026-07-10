@@ -9,7 +9,7 @@
 html,body {
     height: 100%;
     width: 100%;
-    background: linear-gradient(135deg, #692636 10%, #beaef0 50%, #a4ffde 100%) !important;
+    background: linear-gradient(135deg, #d3909f 10%, #beaef0 50%, #a4ffde 100%) !important;
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
